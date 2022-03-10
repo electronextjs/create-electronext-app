@@ -22,6 +22,15 @@
     "snapupdate": "jest --updateSnapshot",
     "coverage": "jest --coverage"
   },
+  "keywords": [
+    "electron",
+    "nextjs",
+    "next.js",
+    "react",
+    "ElectroNext",
+    "ElectroNext.js",
+    "create-electronext-app"
+  ],
   "files": [
     "src",
     "LICENSE",
@@ -32,7 +41,7 @@
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
-    "gluegun": "latest",
+    "gluegun": "^5.1.0",
     "got": "^12.0.1",
     "tar": "^6.1.11"
   },
