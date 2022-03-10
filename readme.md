@@ -1,5 +1,5 @@
 
-![ElectroNext.js Example](https://electronextjs.github.io/create-electronext-app/public/preview.png)
+![ElectroNext.js Example](https://electronextjs.github.io/.github/public/preview.png)
 <p align="center">
 <a href="#details">
 <img src="https://img.shields.io/badge/License-MIT-319046?" alt="License-MIT"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/npm-v1.0.2-319046" alt="Release"/></a>
