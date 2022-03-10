@@ -1,8 +1,8 @@
 
-![ElectroNext.js Example](/public/preview.png)
+![ElectroNext.js Example](https://electronextjs.github.io/create-electronext-app/public/preview.png)
 <p align="center">
 <a href="#details">
-<img src="https://img.shields.io/badge/License-MIT-319046?" alt="License-MIT"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Latest%20Release-v1.0.0-319046" alt="Release"/></a>
+<img src="https://img.shields.io/badge/License-MIT-319046?" alt="License-MIT"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/npm-v1.0.2-319046" alt="Release"/></a>
 
 </p>
 <p align="center">A CLI to create ElectroNext.js application with one command!</p>
