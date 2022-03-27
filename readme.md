@@ -6,7 +6,7 @@
 <p align="center">
 <a href="#details">
 <img src="https://img.shields.io/badge/License-MIT-319046?" alt="License-MIT"/>&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/npm-1.0.7-319046?" alt="License-MIT"/>&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/npm-v1.0.7-319046?" alt="License-MIT"/>&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/ElectroNext.js Release-v1.0.0-319046" alt="ElectroNext.js Release"/></a>
 
 
