@@ -1,7 +1,7 @@
 {
   "name": "create-electronext-app",
-  "version": "v1.0.3",
-  "description": "Create Electron App Example with Next + Typescript + Vibrancy",
+  "version": "v1.0.5",
+  "description": "Create Electron App Example with Next + Typescript",
   "repository": "https://github.com/electronextjs/create-electronext-app",
   "author": {
     "name": "André Malveira",

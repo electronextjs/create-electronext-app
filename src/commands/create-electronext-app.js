@@ -25,8 +25,9 @@ https://github.com/electronextjs/ElectroNext.js
     `)
     }
 
-    async function validateRepoFiles(owner, repo, paths) {
+    async function validateRepoFiles(owner, repo, paths, _app_name) {
       const { Octokit } = require('@octokit/rest')
+      const _app_dir = filesystem.dir(_app_name).cwd()
       const spinner = toolbox.print.spin('Validating ElectroNext files...')
       try {
         await new Octokit().repos.getContent({
@@ -36,14 +37,17 @@ https://github.com/electronextjs/ElectroNext.js
         })
 
         spinner.succeed('Validated files')
+        return true
       } catch (error) {
         spinner.fail('Validating Failed!')
-        print.error(error)
+        filesystem.remove(_app_dir)
+        print.error(`× Error: ${error.message} - Status ${error.status}`)
+        return false
       }
     }
 
     async function downloadRepoFiles(_app_name) {
-      const mainUrl = `https://codeload.github.com/${_repo_config.owner}/${_repo_config.repo}/tar.gz/main`
+      const mainUrl = `https://codeload.github.com/${_repo_config.owner}/${_repo_config.repo}/tar.gz/${_repo_config.branch}`
       const _app_dir = filesystem.dir(_app_name).cwd()
 
       const { default: got } = await import('got')
@@ -60,10 +64,12 @@ https://github.com/electronextjs/ElectroNext.js
         })
 
         spinner.succeed('Downloaded files')
+        return true
       } catch (error) {
         spinner.fail('Download Failed!')
-        print.error(error)
+        print.error(`× Error: ${error.message} - Status ${error.status}`)
         filesystem.remove(_app_dir)
+        return false
       }
     }
 
@@ -74,7 +80,7 @@ https://github.com/electronextjs/ElectroNext.js
       const cwd = filesystem.dir(_app_name).cwd()
 
       const spinner = toolbox.print.spin(
-        'Installing ElectroNext dependencies. This might take a couple of minutes.'
+        'Installing dependencies. This might take a couple of minutes.'
       )
 
       await exec(
@@ -85,12 +91,11 @@ https://github.com/electronextjs/ElectroNext.js
         (error, stdout, stderr) => {
           if (error) {
             spinner.fail('Install dependencies Failed!')
-            print.error(error.message)
+            print.error(`× Error: ${error.message}`)
             return
           }
           if (stderr) {
             spinner.fail('Install dependencies Failed!')
-            print.error(stderr)
             return
           }
           spinner.succeed('Installed Dependencies')
@@ -100,9 +105,21 @@ https://github.com/electronextjs/ElectroNext.js
     }
 
     async function createElectroNextApp() {
-      await validateRepoFiles(_repo_config.owner, _repo_config.repo)
-      await downloadRepoFiles(_app_name)
-      await installDependencies(_app_name, pm)
+      let validated, downloaded
+
+      validated = await validateRepoFiles(
+        _repo_config.owner,
+        _repo_config.repo,
+        false,
+        _app_name
+      )
+
+      if (validated) {
+        downloaded = await downloadRepoFiles(_app_name)
+      }
+      if (downloaded) {
+        await installDependencies(_app_name, pm)
+      }
     }
 
     //@verifications
